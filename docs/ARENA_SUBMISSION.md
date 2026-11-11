@@ -40,7 +40,7 @@ Rome lets a Solana wallet sign a call to a Solidity contract and share its state
 
 ## Links
 
-- Website: `ADD_APP_URL`
+- Website: `https://rome-tessera.vercel.app`
 - GitHub: `https://github.com/hoasine/rome-tessera`
 - X: `https://x.com/HoaTranRom`
 - Contract: `ADD_CONTRACT_ADDRESS`
