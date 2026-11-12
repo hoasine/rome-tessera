@@ -4,7 +4,9 @@ import { syntheticAddress } from "@rome-protocol/sdk";
 import { Keypair } from "@solana/web3.js";
 import { getAddress, keccak256, recoverMessageAddress } from "viem";
 import {
+  eventDescription,
   eventStatus,
+  isDemoEvent,
   isFull,
   relativeTime,
   solanaPubkeyHex,
@@ -79,6 +81,14 @@ describe("event helpers", () => {
     assert.equal(statusLabel(event({ endsAt: 150 + 90 * 86400 }), 150), "Open now");
     assert.equal(relativeTime(100 + 2 * 3600 + 300, 100), "in 2h 5m");
     assert.equal(relativeTime(100, 100 + 86400 + 3600), "1d 1h ago");
+  });
+
+  it("labels seeded demo events and hides the prefix", () => {
+    const demo = event({ description: "Demo event · Lightning demos." });
+    assert.equal(isDemoEvent(demo), true);
+    assert.equal(eventDescription(demo), "Lightning demos.");
+    assert.equal(isDemoEvent(event({ description: "A real meetup." })), false);
+    assert.equal(eventDescription(event({ description: "A real meetup." })), "A real meetup.");
   });
 
   it("validates event input against on-chain limits", () => {

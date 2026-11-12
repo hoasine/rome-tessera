@@ -7,7 +7,8 @@ import type { Address } from "viem";
 import { isPreviewMode, shortAddress } from "@/lib/config";
 import { loadBadges, loadEvent } from "@/lib/contract";
 import { demoBadges, demoEvents } from "@/lib/demo-data";
-import { formatUtc } from "@/lib/events";
+import { formatUtc, isDemoEvent } from "@/lib/events";
+import { DemoPill } from "./ui";
 import type { Badge, TesseraEvent } from "@/lib/types";
 
 type Stamp = Badge & { event: TesseraEvent | null };
@@ -70,7 +71,9 @@ export function Passport({ address }: { address: Address }) {
           stamps.map((stamp) => (
             <Link className="poll-card stamp" key={stamp.eventId.toString()} href={`/event/${stamp.eventId.toString()}`}>
               <div className="poll-meta">
-                <span>Event #{stamp.eventId.toString()}</span>
+                <span>
+                  Event #{stamp.eventId.toString()} {stamp.event && isDemoEvent(stamp.event) && <DemoPill />}
+                </span>
                 <span className={`status ${stamp.solana ? "status-solana" : "status-evm"}`}>
                   {stamp.solana ? "Proven Solana" : "EVM"}
                 </span>

@@ -4,6 +4,19 @@ import type { EventStatus, TesseraEvent } from "./types";
 
 export const MAX_DURATION_SECONDS = 30 * 24 * 60 * 60;
 
+/** Description prefix written by scripts/seed-demo.ts so seeded events are labelled. */
+export const DEMO_EVENT_PREFIX = "Demo event ·";
+
+export function isDemoEvent(event: TesseraEvent) {
+  return event.description.startsWith(DEMO_EVENT_PREFIX);
+}
+
+export function eventDescription(event: TesseraEvent) {
+  return isDemoEvent(event)
+    ? event.description.slice(DEMO_EVENT_PREFIX.length).trim()
+    : event.description;
+}
+
 export function eventStatus(event: TesseraEvent, now: number): EventStatus {
   if (event.closed || now >= event.endsAt) return "ended";
   if (now < event.startsAt) return "upcoming";

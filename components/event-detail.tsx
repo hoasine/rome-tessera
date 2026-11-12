@@ -7,11 +7,20 @@ import type { Hex } from "viem";
 import { TESSERA_ADDRESS, VIA_BASE_URL, isPreviewMode, shortAddress } from "@/lib/config";
 import { encodeCloseEvent, encodeRotateSigner, loadClaimedAt, loadEvent } from "@/lib/contract";
 import { demoEvents } from "@/lib/demo-data";
-import { eventStatus, formatUtc, isFull, readEventKey, saveEventKey, totalClaims } from "@/lib/events";
+import {
+  eventDescription,
+  eventStatus,
+  formatUtc,
+  isDemoEvent,
+  isFull,
+  readEventKey,
+  saveEventKey,
+  totalClaims,
+} from "@/lib/events";
 import { claimUrl, newEventKey, signerOf } from "@/lib/signing";
 import type { TesseraEvent } from "@/lib/types";
 import { useNow } from "@/lib/use-now";
-import { LaneLegend, LaneSplit, QrCode, StatusPill } from "./ui";
+import { DemoPill, LaneLegend, LaneSplit, QrCode, StatusPill } from "./ui";
 import { useRomeWallet } from "./wallet-provider";
 
 export function EventDetail({ eventId }: { eventId: bigint }) {
@@ -110,9 +119,10 @@ export function EventDetail({ eventId }: { eventId: bigint }) {
         <h1>{event.name}</h1>
         <div className="event-facts">
           <StatusPill event={event} />
+          {isDemoEvent(event) && <DemoPill />}
           {event.location && <span className="event-location"><MapPin size={13} /> {event.location}</span>}
         </div>
-        {event.description && <p className="detail-description">{event.description}</p>}
+        {eventDescription(event) && <p className="detail-description">{eventDescription(event)}</p>}
 
         <div className="attendance">
           <div className="option-head">

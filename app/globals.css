@@ -455,6 +455,12 @@ h3 {
   color: #8a5a00;
 }
 
+.status-demo {
+  margin-left: 6px;
+  background: #fbf0d9;
+  color: #8a5a00;
+}
+
 .status-evm {
   background: var(--evm-soft);
   color: #9a4a12;

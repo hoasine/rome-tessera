@@ -7,7 +7,7 @@ import QRCode from "qrcode";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { VIA_BASE_URL, shortAddress } from "@/lib/config";
 import { publicClient } from "@/lib/contract";
-import { eventStatus, share, statusLabel, totalClaims } from "@/lib/events";
+import { eventStatus, isDemoEvent, share, statusLabel, totalClaims } from "@/lib/events";
 import type { TesseraEvent } from "@/lib/types";
 import { useNow } from "@/lib/use-now";
 import { useRomeWallet } from "./wallet-provider";
@@ -185,12 +185,22 @@ export function StatusPill({ event }: { event: TesseraEvent }) {
   );
 }
 
+export function DemoPill() {
+  return (
+    <span className="status status-demo" title="Seeded sample data, not real attendance">
+      Demo
+    </span>
+  );
+}
+
 export function EventCard({ event }: { event: TesseraEvent }) {
   const total = totalClaims(event);
   return (
     <Link className="poll-card" href={`/event/${event.id.toString()}`}>
       <div className="poll-meta">
-        <span>Event #{event.id.toString()}</span>
+        <span>
+          Event #{event.id.toString()} {isDemoEvent(event) && <DemoPill />}
+        </span>
         <StatusPill event={event} />
       </div>
       <h3>{event.name}</h3>
