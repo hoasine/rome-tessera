@@ -43,8 +43,10 @@ Rome lets a Solana wallet sign a call to a Solidity contract and share its state
 - Website: `https://rome-tessera.vercel.app`
 - GitHub: `https://github.com/hoasine/rome-tessera`
 - X: `https://x.com/HoaTranRom`
-- Contract: `ADD_CONTRACT_ADDRESS`
-- Deployment transaction: `ADD_DEPLOY_TX`
+- Contract: `0x6cF4510F1CD406d739939bb140356BE6e17A898b`
+- Deployment transaction (for "Link a contract"): `0xf706a11e87055ecd0de8eb4d8b7d9770b772dff1271136edff8f97a6926e1e01`
+- Via Explorer: `https://via-hadrian.testnet.romeprotocol.xyz/address/0x6cF4510F1CD406d739939bb140356BE6e17A898b`
+- Verified source: `https://verify.testnet.romeprotocol.xyz/repo-ui/200010/0x6cF4510F1CD406d739939bb140356BE6e17A898b`
 - Demo video: `ADD_VIDEO_URL`
 
 ## Grant application

@@ -4,6 +4,11 @@ Tessera issues on-chain check-in badges that MetaMask and Solflare users claim b
 
 ![CI](https://github.com/hoasine/rome-tessera/actions/workflows/check.yml/badge.svg)
 
+## Live deployment
+
+- App: https://rome-tessera.vercel.app
+- Tessera contract: `0x6cF4510F1CD406d739939bb140356BE6e17A898b` ([explorer](https://via-hadrian.testnet.romeprotocol.xyz/address/0x6cF4510F1CD406d739939bb140356BE6e17A898b), [verified source](https://verify.testnet.romeprotocol.xyz/repo-ui/200010/0x6cF4510F1CD406d739939bb140356BE6e17A898b))
+
 ## How check-in works
 
 1. The organizer creates an event. Their browser generates a throwaway event key; only its public address (`signer`) is stored on-chain. The private key stays on the organizer's device.
